@@ -1,0 +1,53 @@
+.wrapper
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  min-height: 50vh
+  align-items: center
+
+.card
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  min-width: 45vh
+  background-color: #FAFAFA
+
+h1
+  width: 70%
+  background: #b01030
+  background: linear-gradient(-60deg, transparent 1.5rem, #b01030 0)
+  color: white
+
+form
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  margin-top: 0.5rem
+
+input, select, textarea
+    width: 90%
+    margin-bottom: 1rem
+
+td
+  vertical-align: top
+
+.icon
+  position: absolute
+  margin-left: 0.1rem
+
+.input-field
+  min-height: 1.2rem
+
+.validation
+  margin-top: -1rem
+  color: red
+  max-width: 90%
+
+input
+  &.ng-invalid.ng-touched
+    border: 1px solid red
+
+textarea
+  &.ng-invalid.ng-touched
+    border: 1px solid red

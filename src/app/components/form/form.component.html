@@ -1,0 +1,154 @@
+<div class="wrapper">
+  <mat-card class="card" *ngIf="isSubmitted == false">
+
+      <h1>Напишите нам:</h1>
+
+    <form [formGroup]="messageForm" (ngSubmit)="submitForm()">
+      <table>
+        <tbody>
+
+          <tr>
+            <td>
+              <label>Ваше имя:</label>
+            </td>
+            <td>
+              <mat-icon class="icon" *ngIf="nameBlur && !_name.dirty">
+                person
+              </mat-icon>
+              <input type="text" class="input-field"
+                (focus)="nameFocused()"
+                (blur)="nameBlured()"
+                formControlName="name">
+              <div class="validation" *ngIf="_name.touched && _name.invalid">
+                <small>Введите имя</small>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label>Ваш Email:</label>
+            </td>
+            <td>
+              <mat-icon class="icon" *ngIf="maleBlur && !_email.dirty">
+                email
+              </mat-icon>
+              <input type="email" class="input-field"
+                (focus)="emailFocused()"
+                (blur)="emailBlured()"
+                formControlName="email">
+                <div class="validation" *ngIf="_email.touched && _email.invalid">
+                  <small>Введите корректный email</small>
+                </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label>Ваш телефон (без +7):</label>
+            </td>
+            <td>
+              <mat-icon class="icon" *ngIf="phoneBlur && !_phone.dirty">
+                local_phone
+              </mat-icon>
+              <input
+              name="phone"
+              [textMask]="{mask: mask}"
+              type="text"
+              class="input-field"
+              (focus)="phoneFocused()"
+              (blur)="phoneBlured()"
+              formControlName="phone"/>
+              <div class="validation" *ngIf="_phone.touched && _phone.invalid">
+                <small>Введите корректный номер телефона</small>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label>Тема:</label>
+            </td>
+            <td>
+              <select formControlName="topic">
+                <option  *ngFor="let topic of allTopics" value="{{topic.topicId}}">
+                  {{topic.topicName}}
+                </option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label>Ваше сообщение:</label>
+            </td>
+            <td>
+              <textarea formControlName="message"></textarea>
+              <div class="validation" *ngIf="_message.touched && _message.invalid">
+                <small>Текст сообщения должен быть не менее {{_message.errors.minlength.requiredLength}} символов</small>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <button mat-raised-button  type="submit"
+                [disabled]="messageForm.invalid">
+                Отправить письмо!
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+    </form>
+
+  </mat-card>
+
+  <mat-card class="card" *ngIf="isSubmitted == true">
+
+    <h1>Обращение отправлено! Ваши данные:</h1>
+
+    <table>
+
+      <tbody>
+        <tr>
+          <td>Ваше имя:</td>
+          <td> {{messageToSend.Name}} </td>
+        </tr>
+
+        <tr>
+          <td>Ваш Email:</td>
+          <td> {{messageToSend.Email}} </td>
+        </tr>
+
+        <tr>
+          <td>Ваш телефон:</td>
+          <td> {{messageToSend.Phone}} </td>
+        </tr>
+
+        <tr>
+          <td>Тема:</td>
+          <td> {{selectedTopic}} </td>
+        </tr>
+
+        <tr>
+          <td>Текст обращения:</td>
+          <td> {{messageToSend.Message}} </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td>
+            <button mat-raised-button type="button" (click)="goBack()">
+              Назад
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
