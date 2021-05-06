@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
+import { RecaptchaModule, RecaptchaFormsModule  } from "ng-recaptcha";
 
 
 @NgModule({
@@ -29,7 +30,9 @@ import { FormComponent } from './components/form/form.component';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    TextMaskModule
+    TextMaskModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

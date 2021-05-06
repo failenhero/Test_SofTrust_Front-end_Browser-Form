@@ -100,12 +100,19 @@ export class FormComponent implements OnInit {
       message: ['', [
         Validators.minLength(10),
         Validators.required
+      ]],
+      recaptcha: ['', [
+        Validators.required
       ]]
     })
   }
 
   goBack() {
     this.isSubmitted = false;
+  }
+
+  resolved(captchaResponse: any) {
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
   }
 
   get _name() {

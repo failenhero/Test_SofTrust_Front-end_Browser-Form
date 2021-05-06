@@ -1,4 +1,7 @@
 <div class="wrapper">
+
+  <!-- Это карточка формы с запросом -->
+
   <mat-card class="card" *ngIf="isSubmitted == false">
 
       <h1>Напишите нам:</h1>
@@ -93,6 +96,17 @@
           <tr>
             <td></td>
             <td>
+              <re-captcha
+                formControlName="recaptcha"
+                (resolved)="resolved($event)"
+                siteKey="6LfbAqgaAAAAAAHJiQFhqQfAqpR4TnbO0N8Xht3T">
+              </re-captcha>`
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
               <button mat-raised-button  type="submit"
                 [disabled]="messageForm.invalid">
                 Отправить письмо!
@@ -108,9 +122,12 @@
 
   </mat-card>
 
+  <!-- Ниже расположена карточка ответа -->
+
   <mat-card class="card" *ngIf="isSubmitted == true">
 
-    <h1>Обращение отправлено! Ваши данные:</h1>
+    <h1>Обращение отправлено!</h1>
+    <h2>Ваши данные:</h2>
 
     <table>
 
